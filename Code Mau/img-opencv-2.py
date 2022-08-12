@@ -8,8 +8,8 @@ import sys
 
 
 # ten anh
-fileIMG = sys.argv[1]
-# fileIMG = "DataImg/z3636157850479_e3ab67833b25b26e40ae5be6c4b7a339.jpg"
+# fileIMG = sys.argv[1]
+fileIMG = "DataImg/Cay hoa song doi/IMG_20220810_134109.jpg"
 
 # img = cv2.imread(fileIMG, cv2.IMREAD_GRAYSCALE) # che do mau xam
 img = cv2.imread(fileIMG)

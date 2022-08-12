@@ -45,3 +45,11 @@ pip install lxml
 pip install opencv-python
 
 pip install matplotlib
+
+pip install pandas
+
+pip install -U scikit-learn
+
+pip install tensorflow
+
+pip install keras
