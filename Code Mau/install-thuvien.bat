@@ -1,4 +1,4 @@
-python -m pip install --upgrade
+c:\program files\python39\python.exe -m pip install --upgrade pip
 
 pip install fake-useragent
 
