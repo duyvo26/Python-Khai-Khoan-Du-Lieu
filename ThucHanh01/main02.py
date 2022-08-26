@@ -1,10 +1,10 @@
 # 26d8m2022
 
 def Test(test_size_):
-    from sklearn.datasets import load_wine
+    from sklearn.datasets import load_breast_cancer
     import numpy as np
 
-    data = load_wine()
+    data = load_breast_cancer()
     X, y = data['data'], data['target']
     # # # # # # # #
 
@@ -35,7 +35,7 @@ def Test(test_size_):
     print("F1:\t", f1)
 
 
-for i in range(1, 10):
+for i in range(2, 5):
     test_size = i * 0.1
     print("-------------test_size\t", test_size,'-----------------')
     Test(test_size)
