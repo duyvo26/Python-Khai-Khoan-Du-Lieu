@@ -15,23 +15,25 @@ print(y.shape)
 # plt.show()
 
 
-from sklearn.model_selection import train_test_split 
-X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, shuffle=True) 
-print(X_train.shape, y_train.shape) 
-print(X_test.shape, y_test.shape) 
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.3, shuffle=True)
+print(X_train.shape, y_train.shape)
+print(X_test.shape, y_test.shape)
+
+# Thuật toán K láng giềng gần nhất (K-Nearest Neighbor - KNN)
+print("Thuật toán K láng giềng gần nhất (K-Nearest Neighbor - KNN)")
+from sklearn.neighbors import KNeighborsClassifier
+model = KNeighborsClassifier(n_neighbors=1)
+model.fit(X_train, y_train)
+from sklearn.metrics import accuracy_score
+print("ACC tren tap train")
+y_pred_train = model.predict(X_train)
+print("ACC Train:", accuracy_score(y_pred_train, y_train))
+y_pred_test = model.predict(X_test)
+print("ACC Test:", accuracy_score(y_pred_test, y_test))
 
 
-# from sklearn.neighbors import KNeighborsClassifier 
-# model = KNeighborsClassifier(n_neighbors=1) 
-# model.fit(X_train, y_train) 
-# from sklearn.metrics import accuracy_score 
-# print("ACC tren tap train") 
-# y_pred_train = model.predict(X_train) 
-# print("ACC Train:", accuracy_score(y_pred_train, y_train))
-# y_pred_test = model.predict(X_test) 
-# print("ACC Test:", accuracy_score(y_pred_test, y_test))
-
-
+# Phân loại cây quyết định bằng Python
 
 from sklearn.tree import DecisionTreeClassifier 
 model = DecisionTreeClassifier(criterion='gini')
