@@ -1,9 +1,9 @@
 # 26d8m2022
 
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_digits
 import numpy as np
 
-data = load_iris()
+data = load_digits()
 X, y = data['data'], data['target']
 # # # # # # # #
 
