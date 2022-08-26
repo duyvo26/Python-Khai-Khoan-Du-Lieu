@@ -1,10 +1,10 @@
 # 26d8m2022
 
 def Test(test_size_):
-    from sklearn.datasets import load_digits
+    from sklearn.datasets import load_wine
     import numpy as np
 
-    data = load_digits()
+    data = load_wine()
     X, y = data['data'], data['target']
     # # # # # # # #
 
@@ -37,5 +37,5 @@ def Test(test_size_):
 
 for i in range(1, 10):
     test_size = i * 0.1
-    print("test_size\t", test_size)
+    print("-------------test_size\t", test_size,'-----------------')
     Test(test_size)
