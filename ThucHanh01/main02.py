@@ -29,13 +29,14 @@ def Test(test_size_):
     precision = precision_score(y_pred, y_test, average="macro") * 100
     recall = recall_score(y_pred, y_test, average="macro") * 100
     f1 = f1_score(y_pred, y_test, average="macro") * 100
-    print("Accuracy:\t", accuracy)
-    print("Precision:\t", precision)
-    print("Recall:\t", recall)
-    print("F1:\t", f1)
+    print("Accuracy:\t", accuracy, "|", "Precision:\t", precision, "|", "Recall:\t", recall, "|", "F1:\t", f1)
 
 
-for i in range(2, 5):
+
+for i in range(0, 10):
     test_size = i * 0.1
     print("-------------test_size\t", test_size,'-----------------')
-    Test(test_size)
+    try:
+        Test(test_size)
+    except:
+        continue
