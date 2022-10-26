@@ -32,10 +32,9 @@ def Test(test_size_):
     print("Accuracy:\t", accuracy, "|", "Precision:\t", precision, "|", "Recall:\t", recall, "|", "F1:\t", f1)
 
 
-
 for i in range(0, 10):
     test_size = i * 0.1
-    print("-------------test_size\t", test_size,'-----------------')
+    print("-------------test_size\t", test_size, '-----------------')
     try:
         Test(test_size)
     except:
