@@ -379,6 +379,7 @@ def Main(file_name):
 
         out_ACC, out_PER, out_REC, out_F1 = 0, 0, 0, 0
         coutnLan = 1
+        print(a)
         for i in a:
             print("Lan thu", coutnLan, i)
             out_ACC += i[0]
