@@ -1,0 +1,50 @@
+1 KN:Accuracy,74.34210526315789
+1 KN:Precision,61.706440443213296
+1 KN:Recall,74.34210526315789
+1 KN:F1,66.70272550806607
+-----------------,-----------------
+2 DecisionTree:Accuracy,79.86842105263158
+2 DecisionTree:Precision,80.3483832129343
+2 DecisionTree:Recall,79.86842105263158
+2 DecisionTree:F1,77.01329157552067
+-----------------,-----------------
+3 GaussianNB:Accuracy,71.6842105263158
+3 GaussianNB:Precision,74.98022882690064
+3 GaussianNB:Recall,71.6842105263158
+3 GaussianNB:F1,72.60805597306505
+-----------------,-----------------
+4 SVC:Accuracy,81.28947368421053
+4 SVC:Precision,83.77886996904024
+4 SVC:Recall,81.28947368421053
+4 SVC:F1,80.52506394601632
+-----------------,-----------------
+5  RandomFor:Accuracy,78.8157894736842
+5  RandomFor:Precision,71.59883040935674
+5  RandomFor:Recall,78.8157894736842
+5  RandomFor:F1,71.82374199450001
+-----------------,-----------------
+6 BaggingClass:Accuracy,81.28947368421053
+6 BaggingClass:Precision,79.95098039215686
+6 BaggingClass:Recall,81.28947368421053
+6 BaggingClass:F1,77.80376584431383
+-----------------,-----------------
+7 AdaBoost:Accuracy,79.8157894736842
+7 AdaBoost:Precision,77.1955271305198
+7 AdaBoost:Recall,79.8157894736842
+7 AdaBoost:F1,74.99814678878147
+-----------------,-----------------
+8 GradientBoosting:Accuracy,80.28947368421052
+8 GradientBoosting:Precision,79.05546955624355
+8 GradientBoosting:Recall,80.28947368421052
+8 GradientBoosting:F1,77.1136607046119
+-----------------,-----------------
+9 MLPClass:Accuracy,78.34210526315789
+9 MLPClass:Precision,70.90220927706264
+9 MLPClass:Recall,78.34210526315789
+9 MLPClass:F1,70.89557481298843
+-----------------,-----------------
+10 LogisticReg:Accuracy,77.6842105263158
+10 LogisticReg:Precision,81.45143188854489
+10 LogisticReg:Recall,77.6842105263158
+10 LogisticReg:F1,77.37226267884162
+-----------------,-----------------

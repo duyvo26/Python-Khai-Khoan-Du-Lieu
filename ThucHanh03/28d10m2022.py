@@ -56,12 +56,14 @@ def GhiFileCSV(file_name, txt1, txt2):
     }
     df_data = pd.DataFrame(data)
     from datetime import datetime
-    today = str(datetime.today().strftime("%d_%m_%Y_%H"))
+    today = str(datetime.today().strftime("%d_%m_%Y"))
     df_data.to_csv('CSV\\data__' + file_name + '__duyvo-192339-' + today + '.csv', mode='a', index=False, header=False)
 
 
 def BaggingClassifier_(X_train, X_test, y_train, y_test, status):
     from sklearn.ensemble import BaggingClassifier
+    status = str(int(status) + 1)
+    print("Stasus in ", status)
 
     if status == "1":
         from sklearn.neighbors import KNeighborsClassifier
@@ -122,6 +124,8 @@ def BaggingClassifier_(X_train, X_test, y_train, y_test, status):
 
 def GradientBoostingClassifier_(X_train, X_test, y_train, y_test, status):
     # 1 KN, 2 DecisionTree, 3 GaussianNB, 4 SVC, 5  RandomFor,  6 BaggingClass, 7 AdaBoost, 8 GradientBoosting, 9 MLPClass, 10 LogisticReg
+    status = str(int(status) + 1)
+    print("Stasus in ", status)
 
     from sklearn.ensemble import GradientBoostingClassifier
 
@@ -183,6 +187,7 @@ def GradientBoostingClassifier_(X_train, X_test, y_train, y_test, status):
 
 
 def Main(file_name):
+    print("RUN FILE", file_name)
     path_file = "DATA\\" + file_name
     X, y = read_data(path_file)
     print("Có Dữ Liệu Lỗi", check_miss_data(X))
@@ -203,56 +208,60 @@ def Main(file_name):
                 '8 GradientBoosting', '9 MLPClass', '10 LogisticReg']
 
     for new_status in range(1, 3):
-        coutn_listName = 0
-        for a in range(1, int(n_splits_) + 1):
+        for a in range(1, int(len(ListName)) + 1):
+            a -= 1
+            print("---------" + ListName[a] + "_START------------")
             array_save_data = []
+            SoLan = 1
             for train_index, test_index in cv.split(X, y):
                 X_train, X_test, y_train, y_test = X[train_index], X[test_index], y[train_index], y[test_index]
                 # Hoc 28d10m2022
                 if new_status == 1:
                     try:
+                        print("So lan", str(SoLan), ListName[a], "-BaggingClassifier")
                         BaggingClassifier_out = list(BaggingClassifier_(X_train, X_test, y_train, y_test, str(a)))
                         array_save_data.append(BaggingClassifier_out)
                     except:
                         array_save_data.append([0, 0, 0, 0])
-                        print("Co loi bo qua")
+                        print("So lan", str(SoLan), "Co loi bo qua")
                 if new_status == 2:
                     try:
+                        print("So lan", str(SoLan), "-GradientBoostingClassifier")
                         GradientBoostingClassifier_out = list(
                             GradientBoostingClassifier_(X_train, X_test, y_train, y_test, str(a)))
                         array_save_data.append(GradientBoostingClassifier_out)
                     except:
                         array_save_data.append([0, 0, 0, 0])
-                        print("Co loi bo qua")
+                        print("So lan", str(SoLan), "Co loi bo qua")
+                SoLan += 1
             if new_status == 1:
-                file_name = "BaggingClassifier"
+                file_name_ = file_name + "BaggingClassifier"
 
             if new_status == 2:
-                file_name = "GradientBoostingClassifier"
+                file_name_ = file_name + "GradientBoostingClassifier"
 
             coutnLan = 1
-            print("---------" + ListName[coutn_listName] + "_START------------")
             out_ACC, out_PER, out_REC, out_F1 = 0, 0, 0, 0
-            for a in array_save_data:
+            for a_ in array_save_data:
                 # for i in a:
-                print("Lan thu", coutnLan, a)
-                out_ACC += a[0]
-                out_PER += a[1]
-                out_REC += a[2]
-                out_F1 += a[3]
+                print("Lan thu", coutnLan, a_)
+                out_ACC += a_[0]
+                out_PER += a_[1]
+                out_REC += a_[2]
+                out_F1 += a_[3]
                 coutnLan += 1
-            print("---------" + ListName[coutn_listName] + "_END------------")
-            print(ListName[coutn_listName] + ":Accuracy", out_ACC / n_splits_)
-            GhiFileCSV(file_name, ListName[coutn_listName] + ":Accuracy", str(out_ACC / n_splits_))
-            print(ListName[coutn_listName] + ":Precision", out_PER / n_splits_)
-            GhiFileCSV(file_name, ListName[coutn_listName] + ":Precision", str(out_PER / n_splits_))
-            print(ListName[coutn_listName] + ":Recall", out_REC / n_splits_)
-            GhiFileCSV(file_name, ListName[coutn_listName] + ":Recall", str(out_REC / n_splits_))
-            print(ListName[coutn_listName] + ":F1", out_F1 / n_splits_)
-            GhiFileCSV(file_name, ListName[coutn_listName] + ":F1", str(out_F1 / n_splits_))
-            GhiFileCSV(file_name, "-----------------", "-----------------")
-            coutn_listName += 1
+            print("---------" + ListName[a] + "_END------------")
+            print(ListName[a] + ":Accuracy", out_ACC / n_splits_)
+            GhiFileCSV(file_name_, ListName[a] + ":Accuracy", str(out_ACC / n_splits_))
+            print(ListName[a] + ":Precision", out_PER / n_splits_)
+            GhiFileCSV(file_name_, ListName[a] + ":Precision", str(out_PER / n_splits_))
+            print(ListName[a] + ":Recall", out_REC / n_splits_)
+            GhiFileCSV(file_name_, ListName[a] + ":Recall", str(out_REC / n_splits_))
+            print(ListName[a] + ":F1", out_F1 / n_splits_)
+            GhiFileCSV(file_name_, ListName[a] + ":F1", str(out_F1 / n_splits_))
+            GhiFileCSV(file_name_, "-----------------", "-----------------")
             array_save_data.clear()
+            print("END")
 
 
 if __name__ == "__main__":
